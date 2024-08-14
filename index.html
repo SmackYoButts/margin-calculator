@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .container input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Margin Calculator</h2>
+        <label for="cost">Cost Price:</label>
+        <input type="number" id="cost" placeholder="Enter cost price">
+        <label for="selling">Selling Price:</label>
+        <input type="number" id="selling" placeholder="Enter selling price">
+        <button onclick="calculateMargin()">Calculate Margin</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        function calculateMargin() {
+            const cost = parseFloat(document.getElementById('cost').value);
+            const selling = parseFloat(document.getElementById('selling').value);
+            if (!isNaN(cost) && !isNaN(selling) && cost > 0 && selling > 0) {
+                const margin = ((selling - cost) / selling) * 100;
+                document.getElementById('result').innerHTML = `Margin: ${margin.toFixed(2)}%`;
+            } else {
+                document.getElementById('result').innerHTML = 'Please enter valid values';
+            }
+        }
+    </script>
+</body>
+</html>
